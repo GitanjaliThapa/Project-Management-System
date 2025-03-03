@@ -1,0 +1,22 @@
+@model List<Milestone3Project.Models.Milestone>
+
+<h2>Project Milestones</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table>
+        <tr><th>Milestone Name</th><th>Due Date</th><th>Description</th></tr>
+        @foreach (var milestone in Model)
+        {
+            <tr>
+                <td>@milestone.MilestoneName</td>
+                <td>@milestone.MilestoneDueDate.ToString("d")</td> <!-- Format Date -->
+                <td>@milestone.MilestoneDescription</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No milestones found for this project.</p>
+}

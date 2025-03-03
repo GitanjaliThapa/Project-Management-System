@@ -1,0 +1,74 @@
+@model dynamic
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js CDN -->
+</head>
+<body>
+    <h1>Project Management Dashboard</h1>
+
+    <div style="display: flex; gap: 20px;">
+        <!-- Summary Cards -->
+        <div style="background: #3498db; padding: 20px; color: white; border-radius: 8px;">
+            <h3>Total Projects</h3>
+            <h2>@Model.totalProjects</h2>
+        </div>
+
+        <div style="background: #e74c3c; padding: 20px; color: white; border-radius: 8px;">
+            <h3>Total Tasks</h3>
+            <h2>@Model.totalTasks</h2>
+        </div>
+
+        <div style="background: #2ecc71; padding: 20px; color: white; border-radius: 8px;">
+            <h3>Completed Tasks</h3>
+            <h2>@Model.completedTasks</h2>
+        </div>
+
+        <div style="background: #f39c12; padding: 20px; color: white; border-radius: 8px;">
+            <h3>Pending Tasks</h3>
+            <h2>@Model.pendingTasks</h2>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Chart 1: Project Task Distribution -->
+    <h2>Tasks per Project</h2>
+    <canvas id="tasksChart"></canvas>
+
+    <script>
+        var projectNames = @Html.Raw(Json.Serialize(Model.projectNames));
+        var projectTaskCounts = @Html.Raw(Json.Serialize(Model.projectTaskCounts));
+
+        console.log("Project Names:", projectNames);
+        console.log("Task Counts:", projectTaskCounts);
+
+        var ctx1 = document.getElementById('tasksChart').getContext('2d');
+        var tasksChart = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: projectNames,
+                datasets: [{
+                    label: 'Number of Tasks',
+                    data: projectTaskCounts,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+
+
+</body>
+</html>

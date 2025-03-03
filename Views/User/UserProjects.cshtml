@@ -1,0 +1,18 @@
+@model List<Milestone3Project.Models.Project>
+
+<h2>User Projects</h2>
+<table>
+    <tr>
+        <th>Project Name</th>
+        <th>Start Date</th>
+        <th>Due Date</th>
+    </tr>
+    @foreach (var project in Model)
+    {
+        <tr>
+            <td>@project.ProjectName</td>
+            <td>@project.ProjectStartDate.ToShortDateString()</td> <!-- Format the date -->
+            <td>@project.ProjectDueDate.ToShortDateString()</td>   <!-- Format the date -->
+        </tr>
+    }
+</table>

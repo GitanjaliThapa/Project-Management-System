@@ -1,0 +1,36 @@
+@model Milestone3Project.Models.Project
+
+@{
+    ViewData["Title"] = "Create Project";
+}
+
+<h2>Create New Project</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="ProjectName">Project Name</label>
+        <input type="text" class="form-control" id="ProjectName" name="ProjectName" required />
+    </div>
+    <div class="form-group">
+        <label for="ProjectStatus">Project Status</label>
+        <input type="text" class="form-control" id="ProjectStatus" name="ProjectStatus" required />
+    </div>
+    <div class="form-group">
+        <label for="ProjectStartDate">Project Start Date</label>
+        <input type="date" class="form-control" id="ProjectStartDate" name="ProjectStartDate" required />
+    </div>
+    <div class="form-group">
+        <label for="ProjectDueDate">Project Due Date</label>
+        <input type="date" class="form-control" id="ProjectDueDate" name="ProjectDueDate" required />
+    </div>
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <textarea class="form-control" id="Description" name="Description" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="UserId">User ID</label>
+        <input type="number" class="form-control" id="UserId" name="UserId" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Project</button>
+</form>

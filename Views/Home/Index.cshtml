@@ -1,0 +1,33 @@
+﻿@model Milestone3Project.Models.User
+
+<h2>Register</h2>
+<form method="post" asp-controller="Home" asp-action="Register">
+    <label>Username:</label>
+    <input type="text" name="Username" required />
+
+    <label>Email:</label>
+    <input type="email" name="Email" required />
+
+    <label>Password:</label>
+    <input type="password" name="Password" required />
+
+    <button type="submit">Register</button>
+</form>
+
+@if (ViewData["Message"] != null)
+{
+<p>@ViewData["Message"]</p>
+}
+
+
+
+
+
+@* @{ *@
+@*     ViewData["Title"] = "Home Page"; *@
+@* } *@
+@* *@
+@* <div class="text-center"> *@
+@*     <h1 class="display-4">Welcome</h1> *@
+@*     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+@* </div> *@
